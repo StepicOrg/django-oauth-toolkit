@@ -149,6 +149,7 @@ class AuthorizationView(BaseAuthorizationView, FormView):
                             credentials=credentials, allow=True)
                         return HttpResponseUriRedirect(uri)                            
 
+            kwargs.pop('request', None)
             return self.render_to_response(self.get_context_data(**kwargs))
 
         except OAuthToolkitError as error:
